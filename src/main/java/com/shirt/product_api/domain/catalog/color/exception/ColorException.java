@@ -1,4 +1,4 @@
-package com.shirt.product_api.domain.color.exception;
+package com.shirt.product_api.domain.catalog.color.exception;
 
 public class ColorException extends  RuntimeException{
 

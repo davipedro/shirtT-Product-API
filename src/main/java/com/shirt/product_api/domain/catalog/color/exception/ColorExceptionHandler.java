@@ -1,4 +1,4 @@
-package com.shirt.product_api.domain.color.exception;
+package com.shirt.product_api.domain.catalog.color.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -12,10 +12,5 @@ public class ColorExceptionHandler {
     @ExceptionHandler(ColorException.class)
     public ResponseEntity<String> handleColorException(ColorException e) {
         return ResponseEntity.badRequest().body(INVALID_REQUEST_BASE_MASSAGE + e.getMessage());
-    }
-
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        return ResponseEntity.badRequest().body("Invalid request body");
     }
 }

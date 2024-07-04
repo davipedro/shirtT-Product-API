@@ -1,16 +1,17 @@
-package com.shirt.product_api.domain.color.controller;
+package com.shirt.product_api.domain.catalog.color.controller;
 
-import com.shirt.product_api.domain.color.dto.CreateColorRequest;
-import com.shirt.product_api.domain.color.dto.UpdateColorRequest;
-import com.shirt.product_api.domain.color.model.Color;
-import com.shirt.product_api.domain.color.service.ColorService;
+import com.shirt.product_api.domain.catalog.color.dto.CreateColorRequest;
+import com.shirt.product_api.domain.catalog.color.dto.UpdateColorRequest;
+import com.shirt.product_api.domain.catalog.color.service.ColorService;
+import com.shirt.product_api.domain.catalog.color.model.Color;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/color")
+@RequestMapping("api/colors")
 public class ColorController {
 
     private final ColorService colorService;
@@ -20,7 +21,7 @@ public class ColorController {
     }
 
     @PostMapping()
-    private ResponseEntity<Color> createColor(@RequestBody CreateColorRequest color) {
+    private ResponseEntity<Color> createColor(@RequestBody @Valid CreateColorRequest color) {
         var newColor = colorService.saveColor(color);
         return ResponseEntity.ok(newColor);
     }
@@ -38,7 +39,7 @@ public class ColorController {
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<Color> updateColor(@PathVariable Long id, @RequestBody UpdateColorRequest color) {
+    private ResponseEntity<Color> updateColor(@PathVariable Long id, @Valid @RequestBody UpdateColorRequest color) {
         var updatedColor = colorService.updateColor(id, color);
         return ResponseEntity.ok(updatedColor);
     }
